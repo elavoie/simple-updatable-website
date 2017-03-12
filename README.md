@@ -36,13 +36,13 @@ Allows a client to remotely update the static files served without restarting th
 
 Add the `(opts.secret)/upload` route to app for uploading files.
 
-- `app` is an express app.
+- `app` is an express app
 - `opts` are options with the following default values:
 
-    {
+      {
         public: path.join(__dirname, 'public'),
         secret: 'uSCmsUmzC2sJx1jWqZ8yy6zQ1vA8NXNKAJqPWcqw' 
-    }
+      }
 
  `opts.secret` should be changed to another alphanumeric value for security.
 
