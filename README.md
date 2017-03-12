@@ -56,3 +56,4 @@ Upload files on the server.
 `protocol` is optional, defaults to `'http://'`
 `cb(err)` is called when the upload is complete
 
+MIT. Copyright (c) [Erick Lavoie](http://ericklavoie.com).
