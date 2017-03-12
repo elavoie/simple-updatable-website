@@ -1,0 +1,35 @@
+{
+  "name": "simple-updatable-file-server",
+  "version": "1.0.0",
+  "description": "Allows a client to remotely update the static filed served without restarting the server using a secret value established when the server was started.",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "busboy": "^0.2.14",
+    "express": "^4.15.2",
+    "randombytes": "^2.0.3",
+    "request": "^2.81.0",
+    "tape": "^4.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tape test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elavoie/simple-updatable-website-server.git"
+  },
+  "keywords": [
+    "static-website",
+    "dynamic",
+    "update"
+  ],
+  "author": "Erick Lavoie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elavoie/simple-updatable-website-server/issues"
+  },
+  "homepage": "https://github.com/elavoie/simple-updatable-website-server#readme"
+}
