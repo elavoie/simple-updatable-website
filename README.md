@@ -36,8 +36,9 @@ Allows a client to remotely update the static files served without restarting th
 
 Add the `(opts.secret)/upload` route to app for uploading files.
 
-- `app` is an express app
-- `opts` are options with the following default values:
+`app` is an express app
+
+`opts` are options with the following default values:
 
       {
         public: path.join(__dirname, 'public'),
@@ -50,10 +51,14 @@ Add the `(opts.secret)/upload` route to app for uploading files.
 
 Upload files on the server.
 
-- `files` is an array of file paths
-- `hostname` is the hostname of the server or `'ip-address:port'`
-- `secret` is the secret used by the server
-- `protocol` is optional, defaults to `'http://'`
-- `cb(err)` is called when the upload is complete
+`files` is an array of file paths
+
+`hostname` is the hostname of the server or `'ip-address:port'`
+
+`secret` is the secret used by the server
+
+`protocol` is optional, defaults to `'http://'`
+
+`cb(err)` is called when the upload is complete
 
 MIT. Copyright (c) [Erick Lavoie](http://ericklavoie.com).
