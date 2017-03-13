@@ -1,5 +1,5 @@
 {
-  "name": "simple-updatable-file-server",
+  "name": "simple-updatable-website",
   "version": "1.0.0",
   "description": "Allows a client to remotely update the static filed served without restarting the server using a secret value established when the server was started.",
   "main": "src/index.js",
