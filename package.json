@@ -1,6 +1,6 @@
 {
   "name": "simple-updatable-website",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Allows a client to remotely update the static filed served without restarting the server using a secret value established when the server was started.",
   "main": "src/index.js",
   "directories": {
@@ -10,7 +10,6 @@
     "busboy": "^0.2.14",
     "debug": "^2.6.2",
     "express": "^4.15.2",
-    "helmet-csp": "^2.7.0",
     "randombytes": "^2.0.3",
     "request": "^2.81.0",
     "tape": "^4.6.3"
