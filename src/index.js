@@ -5,12 +5,18 @@ var Busboy = require('busboy')
 var request = require('request')
 var debug = require('debug')
 var log = debug('simple-updatable-website-server')
+var csp = require('helmet-csp')
 
 module.exports.route = function route (app, opts) {
   opts = opts || {}
   opts.public = opts.public || path.join(__dirname, '../public')
   opts.secret = opts.secret || 'uSCmsUmzC2sJx1jWqZ8yy6zQ1vA8NXNKAJqPWcqw'
   app.use(express.static(opts.public))
+  app.use(csp({
+    directives: {
+      connectSrc: ["'self'", 'http:', 'ws:', 'dat:', 'https:', 'wss:', 'data:', 'blob:']
+    }
+  }))
 
   var clientPath = '/' + opts.secret
   app.post(path.join(clientPath, 'upload'), function (req, res) {
