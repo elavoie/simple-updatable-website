@@ -4,7 +4,8 @@ var fs = require('fs')
 var Busboy = require('busboy')
 var request = require('request')
 var debug = require('debug')
-var log = debug('simple-updatable-website-server')
+var logServer = debug('simple-updatable-website:server')
+var logClient = debug('simple-updatable-website:client')
 
 module.exports.route = function route (app, opts) {
   opts = opts || {}
@@ -15,13 +16,13 @@ module.exports.route = function route (app, opts) {
   var clientPath = '/' + opts.secret
   app.post(path.join(clientPath, 'upload'), function (req, res) {
     var busboy = new Busboy({ headers: req.headers })
-    log('receiving files')
+    logServer('receiving files')
 
     busboy.on('file', function (fieldname, file, filename) {
       var saveTo = path.join(
         opts.public,
         path.basename(filename))
-      log('saving ' + filename + ' at ' + saveTo)
+      logServer('saving ' + filename + ' at ' + saveTo)
       file.pipe(fs.createWriteStream(saveTo))
     })
     busboy.on('finish', function () {
@@ -38,16 +39,17 @@ module.exports.upload = function upload (files, hostname, secret, protocol, cb) 
     protocol = 'http://'
   }
   var target = protocol + hostname + '/' + secret + '/upload'
-  log('upload([' + files + '], ' + target + ', [' + (typeof cb) + ']')
+  logClient('upload([' + files + '], ' + target + ', [' + (typeof cb) + ']')
   var r = request.post(target, function (err) {
-    log('uploading done')
+    if (err) logClient('uploading error: ' + err)
+    else logClient('uploading done')
     cb(err)
   })
   var form = r.form()
 
   files.forEach(function (file) {
     var filename = path.basename(file)
-    log('uploading ' + file)
+    logClient('uploading ' + file)
     form.append(filename, fs.createReadStream(file), { filename: filename })
   })
 }
